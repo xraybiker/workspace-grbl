@@ -88,6 +88,51 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 $(window).trigger('resize');
             }, 100);
 
+            // make text clickable to remove localstorage setting in case they do want to show this warning
+            // they get 3 seconds to reset it
+            // this is mostly for debug
+            $('.com-chilipeppr-grbl1dot1warning-reset').click(function() {
+                localStorage.setItem("com-chilipeppr-grbl1dot1warning-isHide", "no");
+                console.log("setupGrbl1Dot1Alert. not hiding now.");
+            });
+            
+            // show dialog for 3 secs then decide to hide or not
+            var that = this;
+            setTimeout(function() {
+                that.setupGrbl1Dot1Alert();
+            }, 8000);
+            
+
+        },
+        /**
+         * Show a warning for Grbl 1.1 users.
+         */
+        setupGrbl1Dot1Alert: function() {
+            
+            console.log("setupGrbl1Dot1Alert");
+            // see if we should hide the warning
+            var isHide = "yes";
+            isHide = localStorage.getItem("com-chilipeppr-grbl1dot1warning-isHide");
+            console.log("setupGrbl1Dot1Alert. val is:", isHide);
+            
+            if (isHide == "yes") {
+                // hide the warning
+                console.log("setupGrbl1Dot1Alert. hiding warning. val is:", isHide);
+                $(".com-chilipeppr-grbl1dot1warning").alert('close');
+            } else {
+            
+                console.log("setupGrbl1Dot1Alert. not hiding warning, but attaching close event to create sticky setting. val is:", isHide);
+                
+                // otherwise, set the alert up to store the setting as a sticky setting if user dismissed it
+                $('.com-chilipeppr-grbl1dot1warning').on('closed.bs.alert', function () {
+                  // mark in localstorage to always hide this dialog so it doesn't annoy folks
+                  localStorage.setItem("com-chilipeppr-grbl1dot1warning-isHide", "yes");
+                  console.log("setupGrbl1Dot1Alert. creating sticky setting to hide warning. val is:", isHide);
+                });    
+                
+            }
+            
+            
         },
         /**
          * Returns the billboard HTML, CSS, and Javascript for this Workspace. The billboard
