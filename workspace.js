@@ -1196,7 +1196,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // Gcode List
             // http://jsfiddle.net/chilipeppr/a4g5ds5n/
             chilipeppr.load("#com-chilipeppr-gcode-list",
-                "http://fiddle.jshell.net/chilipeppr/a4g5ds5n/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-gcodelist/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/a4g5ds5n/show/light/",
                 //"http://jsfiddle.net/jarret/0a53jy0x/show/light",
 
                 function() {
@@ -1213,8 +1214,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             //This widget is locked at version 97 until upgrades can be tested with the override code.
             chilipeppr.load(
                 "com-chilipeppr-xyz",
-                "http://raw.githubusercontent.com/chilipeppr/widget-gcodelist/master/auto-generated-widget.html",
-                // "http://fiddle.jshell.net/chilipeppr/gh45j/97/show/light/",
+                "http://fiddle.jshell.net/chilipeppr/gh45j/97/show/light/",
 
                 function() {
                     cprequire(
