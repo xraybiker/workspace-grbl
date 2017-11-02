@@ -1215,9 +1215,11 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             chilipeppr.load(
                 "com-chilipeppr-xyz",
                 // Same version as TinyG 11/1/17
-                "http://raw.githubusercontent.com/chilipeppr/widget-axes/master/auto-generated-widget.html", 
+                // "http://raw.githubusercontent.com/chilipeppr/widget-axes/master/auto-generated-widget.html", 
+                // Github version of Grbl version of XYZ widget by Jarrett originally 11/1/17
+                "http://raw.githubusercontent.com/chilipeppr-grbl/widget-grbl-xyz/master/auto-generated-widget.html",
                 // Original JSFiddle version
-                "http://fiddle.jshell.net/chilipeppr/gh45j/97/show/light/",
+                // "http://fiddle.jshell.net/chilipeppr/gh45j/97/show/light/",
 
                 function() {
                     cprequire(
@@ -1499,7 +1501,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // com-chilipeppr-grbl
             chilipeppr.load(
                 "com-chilipeppr-grbl",
-                "http://fiddle.jshell.net/jarret/9aaL8jg4/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr-grbl/widget-grbl/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/jarret/9aaL8jg4/show/light/",
 
                 function() {
                     cprequire(
