@@ -34,7 +34,7 @@ back the instance of it to init() it.
 // this workspace should be loaded into.
 chilipeppr.load(
   "#pnlWorkspace",
-  "http://raw.githubusercontent.com/https://master/auto-generated-workspace.html",
+  "http://raw.githubusercontent.com/chilipeppr-grbl/workspace-grbl/master/auto-generated-widget.html",
   function() {
     // Callback after workspace loaded into #pnlWorkspace
     // Now use require.js to get reference to instantiated workspace
