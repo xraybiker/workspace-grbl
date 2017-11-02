@@ -1214,6 +1214,9 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             //This widget is locked at version 97 until upgrades can be tested with the override code.
             chilipeppr.load(
                 "com-chilipeppr-xyz",
+                // Same version as TinyG 11/1/17
+                "http://raw.githubusercontent.com/chilipeppr/widget-axes/master/auto-generated-widget.html", 
+                // Original JSFiddle version
                 "http://fiddle.jshell.net/chilipeppr/gh45j/97/show/light/",
 
                 function() {
