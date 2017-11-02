@@ -1439,7 +1439,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // Serial Port Log Window
             // http://jsfiddle.net/chilipeppr/rczajbx0/
             chilipeppr.load("#com-chilipeppr-serialport-log",
-                "http://fiddle.jshell.net/chilipeppr/rczajbx0/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-console/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/rczajbx0/show/light/",
 
                 function() {
                     cprequire(
