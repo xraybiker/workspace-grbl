@@ -818,7 +818,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // Load the dragdrop element into workspace toolbar
             // http://jsfiddle.net/chilipeppr/Z9F6G/
             chilipeppr.load("#com-chilipeppr-ws-gcode-dragdrop",
-                "http://fiddle.jshell.net/chilipeppr/Z9F6G/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/elem-dragdrop/master/auto-generated-widget.html",
+                //"http://fiddle.jshell.net/chilipeppr/Z9F6G/show/light/",
                 function() {
                     require(["inline:com-chilipeppr-elem-dragdrop"], function(dd) {
                         console.log("inside require of dragdrop");
