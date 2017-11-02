@@ -1,5 +1,5 @@
 # com-chilipeppr-workspace-grbl
-A ChiliPeppr Workspace grbl.
+A ChiliPeppr workspace for Grbl.
 
 
 
@@ -13,7 +13,7 @@ not conflict with other ChiliPeppr objects.
 | -------------         | ------------- | 
 | ID                    | com-chilipeppr-workspace-grbl |
 | Name                  | Workspace / grbl |
-| Description           | A ChiliPeppr Workspace grbl. |
+| Description           | A ChiliPeppr workspace for Grbl. |
 | chilipeppr.load() URL | http://raw.githubusercontent.com/https://master/auto-generated-workspace.html |
 | Edit URL              | http://ide.c9.io/chilipeppr/workspace-grbl-real |
 | Github URL            | http://github.com/https:/ |
@@ -135,7 +135,7 @@ The table below shows, in order, the methods and properties inside the workspace
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>id</td><td>string</td><td>"com-chilipeppr-workspace-grbl"<br><br>The ID of the widget. You must define this and make it unique.</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Workspace / grbl"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"A ChiliPeppr Workspace grbl."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/https://master/auto-generated-workspace.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/chilipeppr/workspace-grbl-real"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/https:/"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://workspace-grbl-real-chilipeppr.c9users.io/workspace.html"</td></tr><tr valign="top"><td>widgetConsole</td><td>object</td><td>Contains reference to the Console widget object. Hang onto the reference
+      <tr valign="top"><td>id</td><td>string</td><td>"com-chilipeppr-workspace-grbl"<br><br>The ID of the widget. You must define this and make it unique.</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Workspace / grbl"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"A ChiliPeppr workspace for Grbl."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/https://master/auto-generated-workspace.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/chilipeppr/workspace-grbl-real"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/https:/"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://workspace-grbl-real-chilipeppr.c9users.io/workspace.html"</td></tr><tr valign="top"><td>widgetConsole</td><td>object</td><td>Contains reference to the Console widget object. Hang onto the reference
 so we can resize it when the window resizes because we want it to manually
 resize to fill the height of the browser so it looks clean.</td></tr><tr valign="top"><td>init</td><td>function</td><td>function () <br><br>The workspace's init method. It loads the all the widgets contained in the workspace
 and inits them.</td></tr><tr valign="top"><td>setupGrbl1Dot1Alert</td><td>function</td><td>function () <br><br>Show a warning for Grbl 1.1 users.</td></tr><tr valign="top"><td>getBillboard</td><td>function</td><td>function () <br><br>Returns the billboard HTML, CSS, and Javascript for this Workspace. The billboard

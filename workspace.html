@@ -61,7 +61,13 @@
                                     <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-ws" role="menu">
-                                        <li id="com-chilipeppr-ws-gcode-menu-billboard" style="width:350px;"></li>
+                                        <!--<li id="com-chilipeppr-ws-gcode-menu-billboard" style="width:350px;"></li>-->
+                                        <li class="com-chilipeppr-ws-menu-billboard" style="width:350px;">
+                                            <!-- Billboard -->
+                                            <div class="com-chilipeppr-ws-billboard">
+                                            </div>
+                                            <!-- End Billboard -->
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -134,6 +140,27 @@
         </div>
     </div>
 
+    <!-- Keep this div hidden so it can be cloned and used by the Javascript -->
+    <div id="com-chilipeppr-workspace-grbl-billboard" class="hidden">
+        <div class="billboard-content">
+            <h4 class="billboard-title" style="">Grbl Workspace</h4>
+
+            <p class="billboard-url" style=""><a href="http://chilipeppr.com/grbl">chilipeppr.com/grbl</a>
+
+            </p>
+            <div class="billboard-imgcontain" style="">
+                <a href="http://chilipeppr.com/grbl">
+                    <div class="billboard-img" style="background-image: url('https://www.synthetos.com/wp-content/uploads/2013/02/grblShieldBundle800-800x360.jpg')" />
+                </a>
+                <div class="billboard-stats2">
+                </div>
+
+            </div>
+            <p class="billboard-desc">
+                A ChiliPeppr Workspace for Grbl CNC controllers.
+            </p>
+        </div>
+    </div>
 
 </body>
 

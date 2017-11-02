@@ -159,6 +159,51 @@ body.hover {
 .noheight {
     height:0;
 }
+.billboard-content {
+    padding: 6px 20px;
+}
+.billboard-title {
+    margin-bottom:6px;
+}
+.billboard-url {
+    /* font-size: 9px; */
+    padding-top:0px;
+    margin-bottom:6px;
+    font-size:12px;
+}
+.billboard-img {
+    border:0px solid red;
+    border-radius: 5px;
+    position: relative;
+    width:100%;
+    height:160px;
+    background-position: center;
+    background-size: cover;
+}
+.billboard-imgcontain {
+    border:0px solid red; 
+    position: relative;
+}
+.billboard-stats {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+}
+.billboard-desc {
+    /* font-size:11px; */
+}
+.billboard-detail-title {
+    font-weight: bold;
+}
+.billboard-stats2 {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 4px 10px 10px 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
     </style>
 
     <script type='text/javascript'>
@@ -205,7 +250,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
          */
         id: "com-chilipeppr-workspace-grbl", // Make the id the same as the cpdefine id
         name: "Workspace / grbl", // The descriptive name of your widget.
-        desc: `A ChiliPeppr Workspace grbl.`,
+        desc: `A ChiliPeppr workspace for Grbl.`,
         url: "http://raw.githubusercontent.com/https://master/auto-generated-workspace.html", // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "http://ide.c9.io/chilipeppr/workspace-grbl-real", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "http://github.com/https:/", // The backing github repo
@@ -317,7 +362,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
         addBillboardToWorkspaceMenu: function() {
             // get copy of billboard
             var billboardEl = this.getBillboard();
-            $('#' + this.id + ' .com-chilipeppr-ws-billboard').append(billboardEl);
+            $('#com-chilipeppr-ws-gcode-wrapper .com-chilipeppr-ws-billboard').append(billboardEl);
         },
         /**
          * Listen to window resize event.
@@ -417,19 +462,22 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 }
             );
         },
+        
         /**
          * Load the workspace menu and show the pubsubviewer and fork links using
          * our pubsubviewer widget that makes those links for us.
          */
         loadWorkspaceMenu: function(callback) {
+            
             // Workspace Menu with Workspace Billboard
             var that = this;
             chilipeppr.load(
-                "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
                 function() {
                     require(['inline:com-chilipeppr-elem-pubsubviewer'], function(pubsubviewer) {
-
-                        var el = $('#' + that.id + ' .com-chilipeppr-ws-menu .dropdown-menu-ws');
+                        
+                        var el = $('#com-chilipeppr-ws-gcode-wrapper #com-chilipeppr-ws-gcode-menu .dropdown-menu-ws');
                         console.log("got callback for attachto menu for workspace. attaching to el:", el);
 
                         pubsubviewer.attachTo(
@@ -1013,9 +1061,9 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
             // Workspace Menu with Workspace Billboard
             // http://jsfiddle.net/jlauer/yC8Hv/
-            chilipeppr.load(
-                "#com-chilipeppr-ws-gcode-menu-billboard",
-                "http://fiddle.jshell.net/chilipeppr/6z76Z/show/light/");
+            // chilipeppr.load(
+            //     "#com-chilipeppr-ws-gcode-menu-billboard",
+            //     "http://fiddle.jshell.net/chilipeppr/6z76Z/show/light/");
 
             //Unsure what the purpose of this is; loading the wrong widgets. 
             // MODIFY
@@ -1757,7 +1805,13 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                                     <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-ws" role="menu">
-                                        <li id="com-chilipeppr-ws-gcode-menu-billboard" style="width:350px;"></li>
+                                        <!--<li id="com-chilipeppr-ws-gcode-menu-billboard" style="width:350px;"></li>-->
+                                        <li class="com-chilipeppr-ws-menu-billboard" style="width:350px;">
+                                            <!-- Billboard -->
+                                            <div class="com-chilipeppr-ws-billboard">
+                                            </div>
+                                            <!-- End Billboard -->
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -1830,6 +1884,27 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
         </div>
     </div>
 
+    <!-- Keep this div hidden so it can be cloned and used by the Javascript -->
+    <div id="com-chilipeppr-workspace-grbl-billboard" class="hidden">
+        <div class="billboard-content">
+            <h4 class="billboard-title" style="">Grbl Workspace</h4>
+
+            <p class="billboard-url" style=""><a href="http://chilipeppr.com/grbl">chilipeppr.com/grbl</a>
+
+            </p>
+            <div class="billboard-imgcontain" style="">
+                <a href="http://chilipeppr.com/grbl">
+                    <div class="billboard-img" style="background-image: url('https://www.synthetos.com/wp-content/uploads/2013/02/grblShieldBundle800-800x360.jpg')" />
+                </a>
+                <div class="billboard-stats2">
+                </div>
+
+            </div>
+            <p class="billboard-desc">
+                A ChiliPeppr Workspace for Grbl CNC controllers.
+            </p>
+        </div>
+    </div>
 
 </body>
 

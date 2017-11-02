@@ -40,7 +40,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
          */
         id: "com-chilipeppr-workspace-grbl", // Make the id the same as the cpdefine id
         name: "Workspace / grbl", // The descriptive name of your widget.
-        desc: `A ChiliPeppr Workspace grbl.`,
+        desc: `A ChiliPeppr workspace for Grbl.`,
         url: "(auto fill by runme.js)", // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
@@ -152,7 +152,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
         addBillboardToWorkspaceMenu: function() {
             // get copy of billboard
             var billboardEl = this.getBillboard();
-            $('#' + this.id + ' .com-chilipeppr-ws-billboard').append(billboardEl);
+            $('#com-chilipeppr-ws-gcode-wrapper .com-chilipeppr-ws-billboard').append(billboardEl);
         },
         /**
          * Listen to window resize event.
@@ -252,19 +252,22 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 }
             );
         },
+        
         /**
          * Load the workspace menu and show the pubsubviewer and fork links using
          * our pubsubviewer widget that makes those links for us.
          */
         loadWorkspaceMenu: function(callback) {
+            
             // Workspace Menu with Workspace Billboard
             var that = this;
             chilipeppr.load(
-                "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
                 function() {
                     require(['inline:com-chilipeppr-elem-pubsubviewer'], function(pubsubviewer) {
-
-                        var el = $('#' + that.id + ' .com-chilipeppr-ws-menu .dropdown-menu-ws');
+                        
+                        var el = $('#com-chilipeppr-ws-gcode-wrapper #com-chilipeppr-ws-gcode-menu .dropdown-menu-ws');
                         console.log("got callback for attachto menu for workspace. attaching to el:", el);
 
                         pubsubviewer.attachTo(
@@ -848,9 +851,9 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
             // Workspace Menu with Workspace Billboard
             // http://jsfiddle.net/jlauer/yC8Hv/
-            chilipeppr.load(
-                "#com-chilipeppr-ws-gcode-menu-billboard",
-                "http://fiddle.jshell.net/chilipeppr/6z76Z/show/light/");
+            // chilipeppr.load(
+            //     "#com-chilipeppr-ws-gcode-menu-billboard",
+            //     "http://fiddle.jshell.net/chilipeppr/6z76Z/show/light/");
 
             //Unsure what the purpose of this is; loading the wrong widgets. 
             // MODIFY
