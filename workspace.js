@@ -1529,7 +1529,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // Serial Port Selector
             // http://jsfiddle.net/chilipeppr/vetj5fvx/
             chilipeppr.load("com-chilipeppr-serialport-spselector",
-                "http://fiddle.jshell.net/chilipeppr/vetj5fvx/show/light/",
+            "http://raw.githubusercontent.com/chilipeppr/widget-spjs/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/vetj5fvx/show/light/",
 
                 function() {
                     cprequire(
