@@ -291,7 +291,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // com-chilipeppr-ws-zipwhip
             chilipeppr.load(
                 "#com-chilipeppr-ws-zipwhip",
-                "http://fiddle.jshell.net/chilipeppr/56X9G/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-zipwhip/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/56X9G/show/light/",
                 function() {
                     require(["inline:com-chilipeppr-elem-zipwhip"], function(zipwhip) {
                         zipwhip.init();
@@ -462,7 +463,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             // com-chilipeppr-ws-jscut
             chilipeppr.load(
                 "#com-chilipeppr-ws-jscut",
-                "http://fiddle.jshell.net/chilipeppr/7ZzSV/show/light/",
+                "http://raw.githubusercontent.com/chilipeppr/widget-jscut/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/7ZzSV/show/light/",
                 function() {
                     require(["inline:org-jscut-gcode-widget"], function(jscut) {
                         jscut.init();
@@ -683,7 +685,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                     $(window).trigger('resize');
                 },
             };
-            gpioObj.init();
+            // gpioObj.init();
 
 
             // SuttleXpress
@@ -752,7 +754,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                     $(window).trigger('resize');
                 },
             };
-            shuttlexpressObj.init();
+            // shuttlexpressObj.init();
 
 
             var touchPlateObj = {
