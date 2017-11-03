@@ -11,7 +11,8 @@ cprequire_test(["inline:com-chilipeppr-workspace-grbl"], function(ws) {
      */
     var loadFlashMsg = function() {
         chilipeppr.load("#com-chilipeppr-widget-flash-instance",
-            "http://fiddle.jshell.net/chilipeppr/90698kax/show/light/",
+            "http://raw.githubusercontent.com/chilipeppr/element-flash/master/auto-generated-widget.html",
+            // "http://fiddle.jshell.net/chilipeppr/90698kax/show/light/",
             function() {
                 console.log("mycallback got called after loading flash msg module");
                 cprequire(["inline:com-chilipeppr-elem-flashmsg"], function(fm) {
@@ -86,7 +87,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
             this.setupResize();
             setTimeout(function() {
                 $(window).trigger('resize');
-            }, 100);
+            }, 1000);
 
             // make text clickable to remove localstorage setting in case they do want to show this warning
             // they get 3 seconds to reset it
@@ -189,69 +190,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 }
             );
         },
-        /**
-         * Load the Serial Port JSON Server widget via chilipeppr.load()
-         */
-        loadSpjsWidget: function(callback) {
 
-            var that = this;
-
-            chilipeppr.load(
-                "#com-chilipeppr-widget-serialport-instance",
-                "http://fiddle.jshell.net/chilipeppr/vetj5fvx/show/light/",
-                function() {
-                    console.log("mycallback got called after loading spjs module");
-                    cprequire(["inline:com-chilipeppr-widget-serialport"], function(spjs) {
-                        //console.log("inside require of " + fm.id);
-                        spjs.setSingleSelectMode();
-                        spjs.init({
-                            isSingleSelectMode: true,
-                            defaultBuffer: "default",
-                            defaultBaud: 115200,
-                            bufferEncouragementMsg: 'For your device please choose the "default" buffer in the pulldown and a 115200 baud rate before connecting.'
-                        });
-                        //spjs.showBody();
-                        //spjs.consoleToggle();
-
-                        that.widgetSpjs - spjs;
-
-                        if (callback) callback(spjs);
-
-                    });
-                }
-            );
-        },
-        /**
-         * Load the Console widget via chilipeppr.load()
-         */
-        loadConsoleWidget: function(callback) {
-            var that = this;
-            chilipeppr.load(
-                "#com-chilipeppr-widget-spconsole-instance",
-                "http://fiddle.jshell.net/chilipeppr/rczajbx0/show/light/",
-                function() {
-                    // Callback after widget loaded into #com-chilipeppr-widget-spconsole-instance
-                    cprequire(
-                        ["inline:com-chilipeppr-widget-spconsole"], // the id you gave your widget
-                        function(mywidget) {
-                            // Callback that is passed reference to your newly loaded widget
-                            console.log("My Console widget just got loaded.", mywidget);
-                            that.widgetConsole = mywidget;
-
-                            // init the serial port console
-                            // 1st param tells the console to use "single port mode" which
-                            // means it will only show data for the green selected serial port
-                            // rather than for multiple serial ports
-                            // 2nd param is a regexp filter where the console will filter out
-                            // annoying messages you don't generally want to see back from your
-                            // device, but that the user can toggle on/off with the funnel icon
-                            that.widgetConsole.init(true, /myfilter/);
-                            if (callback) callback(mywidget);
-                        }
-                    );
-                }
-            );
-        },
         
         /**
          * Load the workspace menu and show the pubsubviewer and fork links using
@@ -284,6 +223,53 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
 
         loadWidgets: function(callback) {
+
+            // GRBL
+            // http://jsfiddle.net/jarret/b5L2rtgc/ //alternate test version of grbl controller
+            // com-chilipeppr-grbl
+            chilipeppr.load(
+                "com-chilipeppr-grbl",
+                "http://raw.githubusercontent.com/chilipeppr-grbl/widget-grbl/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/jarret/9aaL8jg4/show/light/",
+
+                function() {
+                    cprequire(
+                        ["inline:com-chilipeppr-widget-grbl"], //"inline:com-chilipeppr-widget-spconsole"],
+                        //, "inline:com-chilipeppr-serialport-spselector"],
+
+                        function(grbl) { //,spconsole) {
+
+                            grbl.init();
+
+                        });
+                });
+                
+            // Serial Port Selector
+            // http://jsfiddle.net/chilipeppr/vetj5fvx/
+            chilipeppr.load("com-chilipeppr-serialport-spselector",
+            "http://raw.githubusercontent.com/chilipeppr/widget-spjs/master/auto-generated-widget.html",
+                // "http://fiddle.jshell.net/chilipeppr/vetj5fvx/show/light/",
+
+                function() {
+                    cprequire(
+                        ["inline:com-chilipeppr-widget-serialport"],
+
+                        function(sp) {
+                            // sp.setSingleSelectMode();
+                            //sp.init("192.168.1.7");
+                            // sp.init(null, "grbl");
+                            //$('.com-chilipeppr-widget-serialport-console').removeClass("hidden");
+                            //$('.com-chilipeppr-widget-serialport-consoleinput').removeClass("hidden");
+                            //$('.com-chilipeppr-widget-serialport-status').removeClass("hidden");
+                            sp.setSingleSelectMode();
+                            sp.init({
+                                isSingleSelectMode: true,
+                                defaultBuffer: "grbl",
+                                defaultBaud: 115200,
+                                bufferEncouragementMsg: 'For your device please choose the "grbl" buffer in the pulldown and a 115200 baud rate before connecting.'
+                            });
+                        });
+                });
 
             // Load top bar elements
 
@@ -685,7 +671,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                     $(window).trigger('resize');
                 },
             };
-            // gpioObj.init();
+            gpioObj.init();
 
 
             // SuttleXpress
@@ -754,7 +740,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                     $(window).trigger('resize');
                 },
             };
-            // shuttlexpressObj.init();
+            shuttlexpressObj.init();
 
 
             var touchPlateObj = {
@@ -852,36 +838,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                     });
                 });
 
-            // Workspace Menu with Workspace Billboard
-            // http://jsfiddle.net/jlauer/yC8Hv/
-            // chilipeppr.load(
-            //     "#com-chilipeppr-ws-gcode-menu-billboard",
-            //     "http://fiddle.jshell.net/chilipeppr/6z76Z/show/light/");
-
-            //Unsure what the purpose of this is; loading the wrong widgets. 
-            // MODIFY
-            // This is a fiddle that looks at the Grbl workspace being instantiated
-            // here and attaches 3 menu items. 1) the pubsub viewer dialog so users
-            // can see what pubsubs this workspace may publish or subscribe to 2) It
-            // lets them fork the workspace for their own use
-            /*
-            chilipeppr.load(
-                "http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/",
-
-                function() {
-                    require(['inline:com-chilipeppr-elem-pubsubviewer'], function(pubsubviewer) {
-                        // you are asking the pubsubviewer to show its menu
-                        // inside the dom element in the 1st param, in the 2nd
-                        // param you are giving it which object to analyze to gather
-                        // its data, the 3rd param is just a name
-                        pubsubviewer.attachTo(
-                            $('#com-chilipeppr-ws-gcode-menu .dropdown-menu-ws'),
-                            ws,
-                            "Workspace");
-                    });
-                });
-                */
-
+           
             // 3D Viewer
             // http://jsfiddle.net/chilipeppr/y3HRF
             chilipeppr.load("#com-chilipeppr-3dviewer",
@@ -1418,7 +1375,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 });
 
 
-
+            /*
+            // Disabled for now on 11/2/17 because it was jsfiddle
             chilipeppr.load(
                 "#com-chilipeppr-ws-macro",
                 "http://jsfiddle.net/forstuvning/3gmfmnna/8/show/light/",
@@ -1445,7 +1403,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                         });
                     });
                 });
-
+            */
 
             // Serial Port Log Window
             // http://jsfiddle.net/chilipeppr/rczajbx0/
@@ -1459,6 +1417,8 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
                         function(spc) {
 
+                            /*
+                            // commented out on 11/2/17 by jlauer cuz you can just use the filter regexp
                             //stop spconsole from showing status requests responses from jsps
                             var oldOnRecvLine = spc.onRecvLine.bind(spc);
                             var newOnRecvLine = function(data) {
@@ -1480,8 +1440,24 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
                             spc.onRecvLine = newOnRecvLine;
                             spc.jsonOnQueue = newJsonOnQueue;
-
-                            spc.init(true, /^ok|^\n/);
+                            */
+                            
+                            // var oldAppendLog = spc.appendLog.bind(spc);
+                            // var newAppendLog = function(msg) {
+                            //     //ignore incoming status update to keep console clear otherwise continue with original function
+                            //     console.log("GRBL: newAppendLog: ", msg);
+                            //     if (msg.search(/^<|^\$G|^\?|^\[/) < 0 || $('#com-chilipeppr-widget-grbl .grbl-verbose').hasClass("enabled")) {
+                            //         data.dataline = data.dataline.replace("<", "&lt;").replace(">", "&gt;");
+                            //         oldOnRecvLine(data);
+                            //     }
+                            // }
+                            
+                            // in regexp filter below in the init() method filter out:
+                            // ok
+                            // \n
+                            // [G1 G54 G17 G21 G90 G94 M0 M5 M9 T0 F800. S1000.]
+                            spc.init(true, /^ok|^\n|^\[G|^</);
+                            // spc.init(true, /^ok/);
 
                             // resize this console on a browser resize
                             $(window).on('resize', function(evt) {
@@ -1502,25 +1478,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
 
 
 
-            // GRBL
-            // http://jsfiddle.net/jarret/b5L2rtgc/ //alternate test version of grbl controller
-            // com-chilipeppr-grbl
-            chilipeppr.load(
-                "com-chilipeppr-grbl",
-                "http://raw.githubusercontent.com/chilipeppr-grbl/widget-grbl/master/auto-generated-widget.html",
-                // "http://fiddle.jshell.net/jarret/9aaL8jg4/show/light/",
-
-                function() {
-                    cprequire(
-                        ["inline:com-chilipeppr-widget-grbl"], //"inline:com-chilipeppr-widget-spconsole"],
-                        //, "inline:com-chilipeppr-serialport-spselector"],
-
-                        function(grbl) { //,spconsole) {
-
-                            grbl.init();
-
-                        });
-                });
+            
 
             /*
             // WebRTC Client com-chilipeppr-webrtcclient
@@ -1538,25 +1496,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                 });
                 */
 
-            // Serial Port Selector
-            // http://jsfiddle.net/chilipeppr/vetj5fvx/
-            chilipeppr.load("com-chilipeppr-serialport-spselector",
-            "http://raw.githubusercontent.com/chilipeppr/widget-spjs/master/auto-generated-widget.html",
-                // "http://fiddle.jshell.net/chilipeppr/vetj5fvx/show/light/",
-
-                function() {
-                    cprequire(
-                        ["inline:com-chilipeppr-widget-serialport"],
-
-                        function(sp) {
-                            sp.setSingleSelectMode();
-                            //sp.init("192.168.1.7");
-                            sp.init(null, "grbl");
-                            //$('.com-chilipeppr-widget-serialport-console').removeClass("hidden");
-                            //$('.com-chilipeppr-widget-serialport-consoleinput').removeClass("hidden");
-                            //$('.com-chilipeppr-widget-serialport-status').removeClass("hidden");
-                        });
-                });
+            
 
 
 
