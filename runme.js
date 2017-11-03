@@ -1366,7 +1366,7 @@ var getGithubUrl = function(callback) {
   };
   
   ret.url = "https://github.com/chilipeppr-grbl/workspace-grbl";
-  ret.rawurl = "http://raw.githubusercontent.com/chilipeppr-grbl/workspace-grbl/master/auto-generated-widget.html";
+  ret.rawurl = "http://raw.githubusercontent.com/chilipeppr-grbl/workspace-grbl/master/auto-generated-workspace.html";
 
   //console.log("ret:", ret);
   return ret;
