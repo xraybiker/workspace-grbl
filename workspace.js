@@ -1257,7 +1257,7 @@ cpdefine("inline:com-chilipeppr-workspace-grbl", ["chilipeppr_ready"], function(
                             // ok
                             // \n
                             // [G1 G54 G17 G21 G90 G94 M0 M5 M9 T0 F800. S1000.]
-                            spc.init(true, /^ok|^\n|^\[G|^</);
+                            spc.init(true, /^ok|^\n|^\[G|^<|^\$G/);
                             // spc.init(true, /^ok/);
 
                             // resize this console on a browser resize
